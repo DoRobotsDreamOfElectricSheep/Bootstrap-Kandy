@@ -16,6 +16,26 @@
         <button id="sendMessage">Send</button>
         <div id="chat-messages"> Chat: </div>
 
+
+        <!-- User input: Session Create/Join -->
+        <fieldset>
+            <legend>Session Create/Join</legend>
+            Session: <input type="text" id="session-id"/>
+
+            <button id="createSession">Create</button>
+            <button id="joinSession">Join</button>
+        </fieldset>
+
+        <!-- Co-Browsing -->
+        <fieldset>
+            <legend>Co-Browsing</legend>
+            <button id="startUser">Start User</button>
+            <button id="stopUser">Stop User</button>
+            <button id="startAgent">Start Agent</button>
+            <button id="stopAgent">Stop Agent</button>
+            <div id="cobrowsing-container" style="width:500px; height:300px; border:1px solid; overflow:hidden;"></div>
+        </fieldset>
+
         <script>
             bsk_setup('DAKaa831cc0aa8548dd9de3e36404dd0168', 'user1@kandy-bootstrap.gmail.com', '1quovelitest1');
         </script>
