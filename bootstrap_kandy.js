@@ -81,7 +81,7 @@ var bootstrap_kandy = function(apiKey, username, password) {
             return;
         }
 
-        var element = "<div>Incoming (recieved): " + unescape(message.message.text) + "</div>";
+        var element = "<div class='received-message'>" + unescape(message.message.text) + "</div>";
         document.getElementById("chat-messages").innerHTML += element;
     };
 
@@ -91,7 +91,7 @@ var bootstrap_kandy = function(apiKey, username, password) {
             return;
         }
         
-        var element = "<div>Outgoing (sent): " + unescape(message.message.text) + "</div>";
+        var element = "<div class='sent-message'>" + unescape(message.message.text) + "</div>";
         document.getElementById("chat-messages").innerHTML += element;
     };
 

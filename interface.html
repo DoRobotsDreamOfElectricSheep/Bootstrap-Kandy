@@ -3,24 +3,22 @@
         position: fixed;
         left: 600px;
         top: 150px;
+        width: 140px;
+    }
+
+    #bootstrap-kandy > div{
+        border:white 8px solid;
+        border-radius: 8px;
     }
 
     #bk-icon{
-        background-image: url(/Bootstrap-Kandy/images/impulse.png);
-        background-size: contain;
         color: white;
-        width: 140px;
-        height: 78px;
-        background-repeat: no-repeat;
+        height: 54px;
     }
 
     #bk-control{
-        background-image: url(/Bootstrap-Kandy/images/box.png);
-        background-size: contain;
         color:white;
-        width: 119px;
         height: 113px;
-        background-repeat: no-repeat;
         overflow: auto;
         padding: 10px;
         display:none;
@@ -43,6 +41,17 @@
         height: 71%;
         width: 100%;
         margin: 3px 0 0 5px;
+    }
+
+    #message-screen, #video-screen, #call-screen, #share-screen{
+        display:none;
+    }
+
+    #message-screen{
+        height: 200px;
+        border: white 8px solid;
+        border-radius: 5px;
+        background-color: rgba(63, 203, 255, 0.8);
     }
     #call-icon{
         background-image: url(/Bootstrap-Kandy/images/call-icon.png);
@@ -104,7 +113,11 @@
 
     <div id="video-screen"></div>
     <div id="call-screen"></div>
-    <div id="chat-screen"></div>
+    <div id="message-screen">
+        <div id="chat-messages"></div>
+        <input id="messageBox">
+        <button id="sendMessage">Send</button>
+    </div>
     <div id="share-screen"></div>
 </div>
 

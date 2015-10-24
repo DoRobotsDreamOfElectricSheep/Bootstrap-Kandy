@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="https://kandy-portal.s3.amazonaws.com/public/javascript/kandy/2.4.0/kandy.js" ></script>
+    <script src="bootstrap_kandy.js"></script>
 </head>
 <body style='background-image:url(/Bootstrap-Kandy/images/city.jpg); height: 2000px;'>
     <script>
         $("body").load("/Bootstrap-Kandy/interface.html", function(){
-            var bkControl = $("#bk-control");
-            $("#bk-icon").hover(function() {
-                bkControl.fadeIn( 500 );
+            var $bkIcon = $("#bk-icon");
+            var $bkControl = $("#bk-control");
+            var $messageScreen = $("#message-screen");
+            $bkIcon.hover(function() {
+                $bkIcon.hide();
+                $bkControl.fadeIn( 500 );
             });
+
+            $bkControl.mouseleave(function(){
+                $bkIcon.show();
+                $bkControl.hide();
+            });
+
+            $("#message-icon").click(function(){
+                $messageScreen.show();
+            });
+
+            bsk_setup('DAKaa831cc0aa8548dd9de3e36404dd0168', 'user1@kandy-bootstrap.gmail.com', '1quovelitest1');
         });
     </script>
 </body>
