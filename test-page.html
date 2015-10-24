@@ -5,9 +5,14 @@
     <title></title>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
-<body>
+<body style='background-image:url(/Bootstrap-Kandy/images/city.jpg); height: 2000px;'>
     <script>
-        $("body").load("/Bootstrap-Kandy/interface.html");
+        $("body").load("/Bootstrap-Kandy/interface.html", function(){
+            var bkControl = $("#bk-control");
+            $("#bk-icon").hover(function() {
+                bkControl.fadeIn( 500 );
+            });
+        });
     </script>
 </body>
 </html>
