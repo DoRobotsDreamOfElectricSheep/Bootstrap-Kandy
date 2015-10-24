@@ -140,14 +140,16 @@
     .sent-message, .received-message
     {
         position: relative;
-        width: 200px;
         text-align: center;
         border: 2px solid #FFF;
         border-radius: 30px;
         box-shadow: 0px 0px 5px #FFF;
         background-color: rgba(24, 50, 75, 0.55);
         color: white;
-        margin-bottom:22px;
+        margin-bottom: 22px;
+        display: inline-block;
+        padding: 0 25px 0 10px;
+        min-width: 94px;
     }
 
     .sent-message:before {
@@ -155,9 +157,9 @@
         position: absolute;
         width: 0;
         height: 0;
-        left: 30px;
+        left: 22px;
         top: 20px;
-        border: 9px solid;
+        border: 7px solid;
         border-color: #FFF transparent transparent #FFF;
     }
 

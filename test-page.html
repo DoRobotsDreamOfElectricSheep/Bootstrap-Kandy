@@ -29,9 +29,6 @@
             $bkControl.mouseleave(function(){
                 if(!hideTitle)
                     $bkIcon.show();
-
-                if(!showControl)
-                    $bkControl.hide();
             });
 
             $("#message-icon").click(function(){
@@ -48,6 +45,7 @@
             });
 
             $("#call-icon").click(function(){
+
                 hideTitle = true;
                 $callScreen.toggle();
             });
