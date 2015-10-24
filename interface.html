@@ -33,6 +33,7 @@
         height:56.5px;
         overflow: hidden;
         padding:0;
+        background-color: rgba(24, 50, 75, 0.55);
      }
 
     #message-icon, #share-icon{
@@ -54,15 +55,8 @@
         margin: 3px 0 0 5px;
     }
 
-    #message-screen, #video-screen, #call-screen, #share-screen{
-        display:none;
-    }
-
     #message-screen{
         height: 200px;
-        border: white 8px solid;
-        border-radius: 5px;
-        background-color: rgba(63, 203, 255, 0.8);
     }
     #call-icon{
         background-image: url(http://bootykandy.s3-us-west-2.amazonaws.com/call-icon.png);
@@ -74,10 +68,7 @@
     }
 
     #call-screen{
-        height: 200px;
-        border: white 8px solid;
-        border-radius: 5px;
-        background-color: rgba(63, 203, 255, 0.8);
+        height: 100px;
     }
 
     #video-icon{
@@ -132,6 +123,13 @@
         border: #A9EBFF 1px solid;
     }
 
+    .screen{
+        background-color: rgba(24, 50, 75, 0.55);
+        border: white 8px solid;
+        border-radius: 5px;
+        display:none;
+    }
+
 </style>
 
 <div id="bootstrap-kandy">
@@ -157,22 +155,22 @@
         </div>
     </div>
 
-    <div id="video-screen">
+    <div id="video-screen" class="screen">
         <button id="callVideo">Call</button>
         <button id="endCall">End Call</button>
         <div id="remote-video"></div>
         <div id="local-video"></div>
     </div>
-    <div id="call-screen">
+    <div id="call-screen" class="screen">
         <button id="call">Call</button>
         <button id="endCall">End Call</button>
     </div>
-    <div id="message-screen">
+    <div id="message-screen" class="screen">
         <div id="chat-messages"></div>
         <input id="messageBox">
         <button id="sendMessage">Send</button>
     </div>
-    <div id="share-screen">
+    <div id="share-screen" class="screen">
         <button id="createSession">Create</button>
         <button id="startUser">Start User</button>
         <button id="stopUser">Stop User</button>
