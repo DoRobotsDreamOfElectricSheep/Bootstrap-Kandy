@@ -43,28 +43,23 @@ var bootstrap_kandy = function(apiKey, username, password) {
         });
 
         $('#createSession').on('click', function() {
-            console.log('creating session');
             createSession();
         });
 
         $('#startUser').on('click', function() {
-            console.log('start user');
             kandy.coBrowsing.startBrowsingUser(sessionId);
         });
 
         $('#stopUser').on('click', function() {
-            console.log('stop user');
             kandy.coBrowsing.stopBrowsingUser();
         });
 
         $('#startAgent').on('click', function() {
-            console.log('start agent');
             var container = document.getElementById('cobrowsing-container');
             kandy.coBrowsing.startBrowsingAgent(sessionId, container);
         });
 
         $('#stopAgent').on('click', function() {
-            console.log('stop agent');
             kandy.coBrowsing.stopBrowsingAgent();
         });
     };
@@ -81,7 +76,6 @@ var bootstrap_kandy = function(apiKey, username, password) {
 
     /************** Message chat callbacks **************/
     var onMessageReceived = function(message) {
-        console.log('message received');
 
         if(message.message.text.startsWith(secretSessionIdBase)) {
             setSessionId(message.message.text);
@@ -94,7 +88,6 @@ var bootstrap_kandy = function(apiKey, username, password) {
     };
 
     var onSendSuccess = function(message) {
-        console.log('messge send success');
         if(message.message.text.startsWith(secretSessionIdBase)) {
             return;
         }
@@ -120,8 +113,6 @@ var bootstrap_kandy = function(apiKey, username, password) {
 
     /************** Video chat callbacks **************/
     var onCallInitiated = function(call, callee) {
-        console.log('call initiated');
-
         callId = call.getId();
     };
 
@@ -131,16 +122,13 @@ var bootstrap_kandy = function(apiKey, username, password) {
     };
 
     var onCallAnswered = function(call) {
-        console.log('call answered');
     };
 
     var onCallEnded = function(call) {
-        console.log('call ended');
         callId = null;
     };
 
     var onCallEstablished = function(call) {
-        console.log('call established');
     };
 
 
