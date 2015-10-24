@@ -1,5 +1,5 @@
 $(function(){
-    bsk_setup('DAKaa831cc0aa8548dd9de3e36404dd0168', 'user1@kandy-bootstrap.gmail.com', '1quovelitest1');
+    bsk_setup('DAKaa831cc0aa8548dd9de3e36404dd0168', 'user2@kandy-bootstrap.gmail.com', '2cumoccaecatiaccu2');
 });
 
 var bsk_setup = function(apiKey, username, password) {

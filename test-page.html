@@ -5,63 +5,11 @@
     <title></title>
     <script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
     <script src="https://kandy-portal.s3.amazonaws.com/public/javascript/kandy/2.4.0/kandy.js" ></script>
-    <script src="bootstrap_kandy.js"></script>
+
 </head>
 <body style='background-image:url(http://bootykandy.s3-us-west-2.amazonaws.com/city.jpg); height: 2000px;'>
-    <script>
-        $("body").load("/Bootstrap-Kandy/interface.html", function(){
-            var $bk = $("#bootstrap-kandy");
-            var $bkIcon = $("#bk-icon");
-            var $icons = $(".icon-container");
-            var $bkControl = $("#bk-control");
-            var $messageScreen = $("#message-screen");
-            var $callScreen = $("#call-screen");
-            var $videoScreen = $("#video-screen");
-            var $shareScreen = $("#share-screen");
-            var hideTitle = false;
-            var showControl = false;
+<script src="bootstrap_kandy.js"></script>
 
-            $bkIcon.hover(function() {
-                $bkIcon.hide();
-                $bkControl.show();
-            });
 
-            $bkControl.mouseleave(function(){
-                if(!hideTitle)
-                    $bkIcon.show();
-            });
-
-            $("#message-icon").click(function(){
-                if(!showControl){
-                    showControl = true;
-                    $bk.addClass("bk-open");
-                    $bkControl.addClass("bk-open");
-                    $icons.addClass("bk-open");
-                }
-
-                hideTitle = true;
-
-                $messageScreen.toggle();
-            });
-
-            $("#call-icon").click(function(){
-
-                hideTitle = true;
-                $callScreen.toggle();
-            });
-
-            $("#video-icon").click(function(){
-                hideTitle = true;
-                $videoScreen.toggle();
-            });
-
-            $("#share-icon").click(function(){
-                hideTitle = true;
-                $shareScreen.toggle();
-            });
-
-            bsk_setup('DAKaa831cc0aa8548dd9de3e36404dd0168', 'user1@kandy-bootstrap.gmail.com', '1quovelitest1');
-        });
-    </script>
 </body>
 </html>
