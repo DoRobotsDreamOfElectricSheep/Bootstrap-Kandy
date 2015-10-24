@@ -43,6 +43,7 @@ var bootstrap_kandy = function(apiKey, username, password) {
         });
 
         $('#createSession').on('click', function() {
+            document.getElementById('#createSession').disabled = true;
             createSession();
         });
 
@@ -62,6 +63,20 @@ var bootstrap_kandy = function(apiKey, username, password) {
         $('#stopAgent').on('click', function() {
             kandy.coBrowsing.stopBrowsingAgent();
         });
+
+        document.getElementById('startUser').disabled = true;
+        document.getElementById('stopUser').disabled = true;
+        document.getElementById('startAgent').disabled = true;
+        document.getElementById('stopAgent').disabled = true;
+
+        if(userId === serviceRepresentative) {
+            $('#startUser').hide();
+            $('#stopUser').hide();
+            $('#createSession').hide();
+        } else {
+            $('#stopAgent').hide();
+            $('#startAgent').hide();
+        }
     };
 
     /************** Login callbacks **************/
@@ -108,7 +123,8 @@ var bootstrap_kandy = function(apiKey, username, password) {
 
         sessionId = parts[1];
         kandy.session.join(sessionId, {}, onSessionJoinSuccess, onSessionFailure);
-        alert('Casting ready. Click Start agent to join');
+
+        document.getElementById('startAgent').disabled = false;
     };
 
     /************** Video chat callbacks **************/
@@ -142,6 +158,11 @@ var bootstrap_kandy = function(apiKey, username, password) {
         };
 
         kandy.session.create(sessionConfig, onSessionCreateSuccess, onSessionFailure);
+
+        document.getElementById('startUser').disabled = false;
+        document.getElementById('stopUser').disabled = false;
+        document.getElementById('startAgent').disabled = false;
+        document.getElementById('stopAgent').disabled = false;
     };
 
     /************** Co Browsing Callbacks **************/
