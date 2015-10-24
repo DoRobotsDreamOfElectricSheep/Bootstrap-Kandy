@@ -1,20 +1,113 @@
 <style>
     #bootstrap-kandy{
-        background: green;
-        height: 40px;
         position: fixed;
-        width: 120px;
+        left: 600px;
+        top: 150px;
     }
 
     #bk-icon{
         background-image: url(/Bootstrap-Kandy/images/impulse.png);
+        background-size: contain;
+        color: white;
+        width: 140px;
+        height: 78px;
+        background-repeat: no-repeat;
     }
+
+    #bk-control{
+        background-image: url(/Bootstrap-Kandy/images/box.png);
+        background-size: contain;
+        color:white;
+        width: 119px;
+        height: 113px;
+        background-repeat: no-repeat;
+        overflow: auto;
+        padding: 10px;
+        display:none;
+    }
+
+    #message-icon, #share-icon{
+        background-image: url(/Bootstrap-Kandy/images/message-icon.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    #title{
+        left: 15px;
+        position: relative;
+        top: 15px;
+        font-size: 20px;
+    }
+
+    #message-icon{
+        height: 71%;
+        width: 100%;
+        margin: 3px 0 0 5px;
+    }
+    #call-icon{
+        background-image: url(/Bootstrap-Kandy/images/call-icon.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 68%;
+        height: 100%;
+        margin: 3px 0 0 10px;
+    }
+
+    #video-icon{
+        background-image: url(/Bootstrap-Kandy/images/video-icon.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 81%;
+        height: 100%;
+        margin: 4px 0 0 5px;
+    }
+
+    .icon-container{
+        float:left;
+        width:50%;
+        height:50%;
+        position: relative;
+        text-align: center;
+    }
+
+    .icon-title{
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+    }
+
 </style>
 
 <div id="bootstrap-kandy">
-    <div id="bk-icon"></div>
+    <div id="bk-icon">
+        <div id="title">Live Chat</div>
+    </div>
+    <div id="bk-control">
+        <div class="icon-container">
+            <div id="message-icon"></div>
+            <div class="icon-title">message</div>
+        </div>
+        <div class="icon-container">
+            <div id="call-icon"></div>
+            <div class="icon-title">call</div>
+        </div>
+        <div class="icon-container">
+            <div id="video-icon"></div>
+            <div class="icon-title">video</div>
+        </div>
+        <div class="icon-container">
+            <div id="share-icon"></div>
+            <div class="icon-title">share</div>
+        </div>
+    </div>
+
     <div id="video-screen"></div>
     <div id="call-screen"></div>
     <div id="chat-screen"></div>
     <div id="share-screen"></div>
 </div>
+
+<script>
+
+</script>
