@@ -10,6 +10,7 @@
 <body style='background-image:url(/Bootstrap-Kandy/images/city.jpg); height: 2000px;'>
     <script>
         $("body").load("/Bootstrap-Kandy/interface.html", function(){
+            var $bk = $("#bootstrap-kandy");
             var $bkIcon = $("#bk-icon");
             var $bkControl = $("#bk-control");
             var $messageScreen = $("#message-screen");
@@ -33,26 +34,28 @@
             });
 
             $("#message-icon").click(function(){
+                if(!showControl){
+                    showControl = true;
+                    $bk.addClass("bk-open");
+                }
+
                 hideTitle = true;
-                showControl = true;
+
                 $messageScreen.show();
             });
 
             $("#call-icon").click(function(){
                 hideTitle = true;
-                showControl = true;
                 $callScreen.show();
             });
 
             $("#video-icon").click(function(){
                 hideTitle = true;
-                showControl = true;
                 $videoScreen.show();
             });
 
             $("#share-icon").click(function(){
                 hideTitle = true;
-                showControl = true;
                 $shareScreen.show();
             });
 
