@@ -184,17 +184,37 @@ var bootstrap_kandy = function(apiKey, username, password) {
         });
 
         $("#call-icon").click(function(){
+            if(!showControl){
+                showControl = true;
+                $bk.addClass("bk-open");
+                $bkControl.addClass("bk-open");
+                $icons.addClass("bk-open");
+            }
 
             hideTitle = true;
             $callScreen.toggle();
         });
 
         $("#video-icon").click(function(){
+            if(!showControl){
+                showControl = true;
+                $bk.addClass("bk-open");
+                $bkControl.addClass("bk-open");
+                $icons.addClass("bk-open");
+            }
+
             hideTitle = true;
             $videoScreen.toggle();
         });
 
         $("#share-icon").click(function(){
+            if(!showControl){
+                showControl = true;
+                $bk.addClass("bk-open");
+                $bkControl.addClass("bk-open");
+                $icons.addClass("bk-open");
+            }
+
             hideTitle = true;
             $shareScreen.toggle();
         });
