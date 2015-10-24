@@ -105,6 +105,8 @@ var bootstrap_kandy = function(apiKey, username, password) {
             document.getElementById('startAgent').disabled = true;
 
             var container = document.getElementById('cobrowsing-container');
+            $(container).addClass("cobrowsing");
+
             kandy.coBrowsing.startBrowsingAgent(sessionId, container);
             document.getElementById('stopAgent').disabled = false;
         });

@@ -109,18 +109,9 @@
         width: 100%;
     }
 
-    .sent-message, .received-message {
-        border-radius: 12px;
-    }
-
     .received-message{
         background: #A9FFA9;
         border: #A9FFA9 1px solid;
-    }
-
-    .sent-message{
-        background: #A9EBFF;
-        border: #A9EBFF 1px solid;
     }
 
     .screen{
@@ -139,6 +130,37 @@
         border-color: none;
         background-color: none;
     }
+
+    #share-screen.cobrowsing{
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+    .sent-message, .received-message
+    {
+        position: relative;
+        width: 200px;
+        text-align: center;
+        border: 2px solid #FFF;
+        border-radius: 30px;
+        box-shadow: 0px 0px 5px #FFF;
+        background-color: rgba(24, 50, 75, 0.55);
+        color: white;
+        margin-bottom:22px;
+    }
+
+    .sent-message:before {
+        content: ' ';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 30px;
+        top: 20px;
+        border: 9px solid;
+        border-color: #FFF transparent transparent #FFF;
+    }
+
 </style>
 
 <div id="bootstrap-kandy">
@@ -187,7 +209,7 @@
         <button id="stopUser">Stop User</button>
         <button id="startAgent">Start Agent</button>
         <button id="stopAgent">Stop Agent</button>
-        <div id="cobrowsing-container" style="width:500px; height:300px; border:1px solid; overflow:hidden;"></div>
+        <div id="cobrowsing-container"></div>
     </div>
 </div>
 
