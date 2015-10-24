@@ -13,12 +13,20 @@ var bootstrap_kandy = function(apiKey, username, password) {
     var serviceRepresentative = 'user2@kandy-bootstrap.gmail.com';
 
     var registerContainers = function() {
-        $('#call').on('click', function(){
+        $('#callVideo').on('click', function(){
             kandy.call.makeCall(serviceRepresentative, true);
         });
 
-        $('#answerCall').on('click', function(){
+        $('#answerCallVideo').on('click', function(){
             kandy.call.answerCall(callId, true);
+        });
+
+        $('#call').on('click', function(){
+            kandy.call.makeCall(serviceRepresentative, false);
+        });
+
+        $('#answerCall').on('click', function(){
+            kandy.call.answerCall(callId, false);
         });
 
         $('#endCall').on('click', function(){
@@ -37,12 +45,6 @@ var bootstrap_kandy = function(apiKey, username, password) {
         $('#createSession').on('click', function() {
             console.log('creating session');
             createSession();
-        });
-
-        $('#joinSession').on('click', function() {
-            console.log('joining session');
-            sessionId = document.getElementById("session-id").value;
-            kandy.session.join(sessionId, {}, onSessionJoinSuccess, onSessionFailure);
         });
 
         $('#startUser').on('click', function() {
@@ -154,11 +156,6 @@ var bootstrap_kandy = function(apiKey, username, password) {
         kandy.session.create(sessionConfig, onSessionCreateSuccess, onSessionFailure);
     };
 
-    var joinSession = function() {
-        sessionId = document.getElementById('session-id').value;
-        kandy.session.join(sessionId, {}, onSessionJoinSuccess, onSessionFailure);
-    };
-
     /************** Co Browsing Callbacks **************/
     var onSessionUserJoinRequest = function(data) {
         kandy.session.acceptJoinRequest(data.session_id, data.full_user_id);
@@ -166,7 +163,6 @@ var bootstrap_kandy = function(apiKey, username, password) {
 
     var onSessionCreateSuccess = function(session) {
         sessionId = session.session_id;
-        document.getElementById('session-id').value = sessionId;
 
         kandy.session.activate(sessionId);
         kandy.session.setListeners(sessionId, {
@@ -175,6 +171,10 @@ var bootstrap_kandy = function(apiKey, username, password) {
 
         // send session id to agent
         secretSessionId = secretSessionIdBase + sessionId;
+        if(recipient === null) {
+            recipient = serviceRepresentative;
+        }
+
         kandy.messaging.sendIm(recipient, secretSessionId, onSendSuccess, onSendFailure);
     };
 
@@ -183,7 +183,6 @@ var bootstrap_kandy = function(apiKey, username, password) {
     };
 
     var onSessionJoinSuccess = function() {
-        document.getElementById('session-id').value = sessionId;
 
         kandy.session.setListeners(sessionId, {
             // TODO: do something with this

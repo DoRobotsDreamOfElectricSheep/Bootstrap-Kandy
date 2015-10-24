@@ -62,7 +62,23 @@
         margin: 3px 0 0 10px;
     }
 
+    #call-screen{
+        height: 200px;
+        border: white 8px solid;
+        border-radius: 5px;
+        background-color: rgba(63, 203, 255, 0.8);
+    }
+
     #video-icon{
+        background-image: url(/Bootstrap-Kandy/images/video-icon.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 81%;
+        height: 100%;
+        margin: 4px 0 0 5px;
+    }
+
+    #share-icon{
         background-image: url(/Bootstrap-Kandy/images/video-icon.png);
         background-repeat: no-repeat;
         background-size: contain;
@@ -87,17 +103,17 @@
     }
 
     .sent-message, .received-message {
-        border: #A9FFA9 1px solid;
         border-radius: 12px;
-
     }
 
     .received-message{
         background: #A9FFA9;
+        border: #A9FFA9 1px solid;
     }
 
     .sent-message{
-        background: #A9FFA9;
+        background: #A9EBFF;
+        border: #A9EBFF 1px solid;
     }
 
 </style>
@@ -125,14 +141,29 @@
         </div>
     </div>
 
-    <div id="video-screen"></div>
-    <div id="call-screen"></div>
+    <div id="video-screen">
+        <button id="callVideo">Call</button>
+        <button id="endCall">End Call</button>
+        <div id="remote-video"></div>
+        <div id="local-video"></div>
+    </div>
+    <div id="call-screen">
+        <button id="call">Call</button>
+        <button id="endCall">End Call</button>
+    </div>
     <div id="message-screen">
         <div id="chat-messages"></div>
         <input id="messageBox">
         <button id="sendMessage">Send</button>
     </div>
-    <div id="share-screen"></div>
+    <div id="share-screen">
+        <button id="createSession">Create</button>
+        <button id="startUser">Start User</button>
+        <button id="stopUser">Stop User</button>
+        <button id="startAgent">Start Agent</button>
+        <button id="stopAgent">Stop Agent</button>
+        <div id="cobrowsing-container" style="width:500px; height:300px; border:1px solid; overflow:hidden;"></div>
+    </div>
 </div>
 
 <script>

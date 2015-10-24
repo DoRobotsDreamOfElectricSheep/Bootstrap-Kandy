@@ -13,18 +13,47 @@
             var $bkIcon = $("#bk-icon");
             var $bkControl = $("#bk-control");
             var $messageScreen = $("#message-screen");
+            var $callScreen = $("#call-screen");
+            var $videoScreen = $("#video-screen");
+            var $shareScreen = $("#share-screen");
+            var hideTitle = false;
+            var showControl = false;
+
             $bkIcon.hover(function() {
                 $bkIcon.hide();
-                $bkControl.fadeIn( 500 );
+                $bkControl.show();
             });
 
             $bkControl.mouseleave(function(){
-                $bkIcon.show();
-                $bkControl.hide();
+                if(!hideTitle)
+                    $bkIcon.show();
+
+                if(!showControl)
+                    $bkControl.hide();
             });
 
             $("#message-icon").click(function(){
+                hideTitle = true;
+                showControl = true;
                 $messageScreen.show();
+            });
+
+            $("#call-icon").click(function(){
+                hideTitle = true;
+                showControl = true;
+                $callScreen.show();
+            });
+
+            $("#video-icon").click(function(){
+                hideTitle = true;
+                showControl = true;
+                $videoScreen.show();
+            });
+
+            $("#share-icon").click(function(){
+                hideTitle = true;
+                showControl = true;
+                $shareScreen.show();
             });
 
             bsk_setup('DAKaa831cc0aa8548dd9de3e36404dd0168', 'user1@kandy-bootstrap.gmail.com', '1quovelitest1');
