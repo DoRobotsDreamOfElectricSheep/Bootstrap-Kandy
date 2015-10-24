@@ -105,13 +105,25 @@ var bootstrap_kandy = function(apiKey, username, password) {
             document.getElementById('startAgent').disabled = true;
 
             var container = document.getElementById('cobrowsing-container');
-            $(container).addClass("cobrowsing");
 
             kandy.coBrowsing.startBrowsingAgent(sessionId, container);
+
+            var waitForSession = setInterval(function(){
+                if($(container).height() > 1) {
+                    var shareScreen = document.getElementById('share-screen');
+                    $(shareScreen).addClass("cobrowsing");
+                    clearInterval(waitForSession);
+                }
+            },1000);
+
+
             document.getElementById('stopAgent').disabled = false;
         });
 
         $('#stopAgent').on('click', function() {
+            var shareScreen = document.getElementById('share-screen');
+            $(shareScreen).removeClass("cobrowsing");
+
             document.getElementById('stopAgent').disabled = true;
             kandy.coBrowsing.stopBrowsingAgent();
         });
