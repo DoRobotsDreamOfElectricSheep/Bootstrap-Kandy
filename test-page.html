@@ -10,7 +10,9 @@
 <body style='background-image:url(http://bootykandy.s3-us-west-2.amazonaws.com/city.jpg); height: 2000px;'>
     <script>
         $("body").load("/Bootstrap-Kandy/interface.html", function(){
+            var $bk = $("#bootstrap-kandy");
             var $bkIcon = $("#bk-icon");
+            var $icons = $(".icon-container");
             var $bkControl = $("#bk-control");
             var $messageScreen = $("#message-screen");
             var $callScreen = $("#call-screen");
@@ -33,26 +35,30 @@
             });
 
             $("#message-icon").click(function(){
+                if(!showControl){
+                    showControl = true;
+                    $bk.addClass("bk-open");
+                    $bkControl.addClass("bk-open");
+                    $icons.addClass("bk-open");
+                }
+
                 hideTitle = true;
-                showControl = true;
+
                 $messageScreen.show();
             });
 
             $("#call-icon").click(function(){
                 hideTitle = true;
-                showControl = true;
                 $callScreen.show();
             });
 
             $("#video-icon").click(function(){
                 hideTitle = true;
-                showControl = true;
                 $videoScreen.show();
             });
 
             $("#share-icon").click(function(){
                 hideTitle = true;
-                showControl = true;
                 $shareScreen.show();
             });
 
