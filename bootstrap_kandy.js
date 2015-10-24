@@ -8,12 +8,13 @@ var bootstrap_kandy = function(apiKey, username, password) {
     var sessionId = null;
     var secretSessionIdBase = 'sid^';
 
+    var recipient = null;
     // TODO: not hardcode
-    var recipient = 'user2@kandy-bootstrap.gmail.com';
+    var serviceRepresentative = 'user2@kandy-bootstrap.gmail.com';
 
     var registerContainers = function() {
         $('#call').on('click', function(){
-            kandy.call.makeCall(recipient, true);
+            kandy.call.makeCall(serviceRepresentative, true);
         });
 
         $('#answerCall').on('click', function(){
@@ -26,6 +27,10 @@ var bootstrap_kandy = function(apiKey, username, password) {
 
         $('#sendMessage').on('click', function(){
             var message = document.getElementById('messageBox').value;
+
+            if(recipient === null) {
+                recipient = serviceRepresentative;
+            }
             kandy.messaging.sendIm(recipient, message, onSendSuccess, onSendFailure);
         });
 
@@ -81,6 +86,7 @@ var bootstrap_kandy = function(apiKey, username, password) {
             return;
         }
 
+        recipient = message.sender.full_user_id;
         var element = "<div class='received-message'>" + unescape(message.message.text) + "</div>";
         document.getElementById("chat-messages").innerHTML += element;
     };
@@ -90,7 +96,7 @@ var bootstrap_kandy = function(apiKey, username, password) {
         if(message.message.text.startsWith(secretSessionIdBase)) {
             return;
         }
-        
+
         var element = "<div class='sent-message'>" + unescape(message.message.text) + "</div>";
         document.getElementById("chat-messages").innerHTML += element;
     };
