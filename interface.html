@@ -62,7 +62,15 @@
 
     #message-screen{
         height: 200px;
+        position:relative;
+        padding-top: 4px;
     }
+
+    #chat-messages {
+        overflow-y: scroll;
+        height: 183px;
+    }
+
     #call-icon{
         background-image: url(http://bootykandy.s3-us-west-2.amazonaws.com/call-icon.png);
         background-repeat: no-repeat;
@@ -151,22 +159,32 @@
         box-shadow: 0px 0px 5px #FFF;
         background-color: rgba(24, 50, 75, 0.55);
         color: white;
-        margin-bottom: 22px;
         display: inline-block;
         padding: 0 25px 0 10px;
         min-width: 94px;
     }
 
-    .sent-message:before {
-        content: ' ';
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 22px;
-        top: 20px;
-        border: 7px solid;
-        border-color: #FFF transparent transparent #FFF;
+    .sent-message{
+        margin-left:4px;
     }
+
+    .received-message{
+        float: right;
+        clear: both;
+        background: rgba(86, 255, 0, 0.57);
+        margin-bottom: 22px;
+    }
+
+    .received-arrow{
+        border: 7px solid;
+        border-color: rgb(255, 255, 255) rgb(255, 255, 255) transparent rgba(255, 255, 255, 0);
+        position: absolute;
+        right: 13px;
+    }
+
+    #messageBox, #sendMessage{position: absolute;bottom: 0;}#messageBox{width:215px;}#sendMessage{right:0;}
+
+    .sent-arrow{width: 0;margin-left: 24px; margin-bottom: 10px; border: 7px solid;border-color: #FFF transparent transparent #FFF;}
 
 </style>
 
