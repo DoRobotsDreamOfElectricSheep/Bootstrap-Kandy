@@ -43,16 +43,20 @@ var bootstrap_kandy = function(apiKey, username, password) {
         });
 
         $('#createSession').on('click', function() {
-            document.getElementById('#createSession').disabled = true;
+            document.getElementById('createSession').disabled = true;
             createSession();
         });
 
         $('#startUser').on('click', function() {
+            document.getElementById('startUser').disabled = true;
             kandy.coBrowsing.startBrowsingUser(sessionId);
+            document.getElementById('stopUser').disabled = false;
         });
 
         $('#stopUser').on('click', function() {
+            document.getElementById('stopUser').disabled = true;
             kandy.coBrowsing.stopBrowsingUser();
+            document.getElementById('createSession').disabled = false;
         });
 
         $('#startAgent').on('click', function() {
@@ -125,6 +129,7 @@ var bootstrap_kandy = function(apiKey, username, password) {
         kandy.session.join(sessionId, {}, onSessionJoinSuccess, onSessionFailure);
 
         document.getElementById('startAgent').disabled = false;
+        $('#startAgent').addClass('buttonHighlight');
     };
 
     /************** Video chat callbacks **************/
@@ -160,7 +165,6 @@ var bootstrap_kandy = function(apiKey, username, password) {
         kandy.session.create(sessionConfig, onSessionCreateSuccess, onSessionFailure);
 
         document.getElementById('startUser').disabled = false;
-        document.getElementById('stopUser').disabled = false;
         document.getElementById('startAgent').disabled = false;
         document.getElementById('stopAgent').disabled = false;
     };
