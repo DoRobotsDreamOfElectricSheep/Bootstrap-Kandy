@@ -8,16 +8,46 @@ var bootstrap_kandy = function(apiKey, username, password) {
     var sessionId = null;
     var secretSessionIdBase = 'sid^';
 
+    // audio for calls
+    var $audioRingIn = $('<audio>', { loop: 'loop', id: 'ring-in' });
+    var $audioRingOut = $('<audio>', { loop: 'loop', id: 'ring-out' });
+
+    // Load audio source to DOM to indicate call events
+    var audioSource = {
+        ringIn: [
+            { src: 'https://kandy-portal.s3.amazonaws.com/public/sounds/ringin.mp3', type: 'audio/mp3' },
+            { src: 'https://kandy-portal.s3.amazonaws.com/public/sounds/ringin.ogg', type: 'audio/ogg' }
+        ],
+        ringOut: [
+            { src: 'https://kandy-portal.s3.amazonaws.com/public/sounds/ringout.mp3', type: 'audio/mp3' },
+            { src: 'https://kandy-portal.s3.amazonaws.com/public/sounds/ringout.ogg', type: 'audio/ogg' }]
+    };
+
+    audioSource.ringIn.forEach(function(entry) {
+        var $source = $('<source>').attr('src', entry.src);
+        $audioRingIn.append($source);
+    });
+
+    audioSource.ringOut.forEach(function(entry) {
+        var $source = $('<source>').attr('src', entry.src);
+        $audioRingOut.append($source);
+    });
+
     var recipient = null;
     // TODO: not hardcode
     var serviceRepresentative = 'user2@kandy-bootstrap.gmail.com';
 
     var registerContainers = function() {
+        $audioRingIn[0].pause();
+        $audioRingOut[0].pause();
+
         $('#callVideo').on('click', function(){
             kandy.call.makeCall(serviceRepresentative, true);
         });
 
         $('#answerCallVideo').on('click', function(){
+            $audioRingIn[0].pause();
+            $audioRingOut[0].pause();
             kandy.call.answerCall(callId, true);
         });
 
@@ -26,10 +56,20 @@ var bootstrap_kandy = function(apiKey, username, password) {
         });
 
         $('#answerCall').on('click', function(){
+            $audioRingIn[0].pause();
+            $audioRingOut[0].pause();
             kandy.call.answerCall(callId, false);
         });
 
         $('#endCall').on('click', function(){
+            $audioRingOut[0].pause();
+            $audioRingIn[0].pause();
+            kandy.call.endCall(callId);
+        });
+
+        $('#endCallVideo').on('click', function(){
+            $audioRingOut[0].pause();
+            $audioRingIn[0].pause();
             kandy.call.endCall(callId);
         });
 
@@ -93,11 +133,11 @@ var bootstrap_kandy = function(apiKey, username, password) {
 
     /************** Login callbacks **************/
     var onLoginSuccess = function() {
-        alert('login success');
+        console.log('login success');
     };
 
     var onLoginFailure = function() {
-        console.log('login failed');
+        alert('login failed');
     };
 
 
@@ -143,6 +183,9 @@ var bootstrap_kandy = function(apiKey, username, password) {
 
     /************** Video chat callbacks **************/
     var onCallInitiated = function(call, callee) {
+        $audioRingIn[0].play();
+        $audioRingOut[0].pause();
+
         callId = call.getId();
     };
 
@@ -155,10 +198,11 @@ var bootstrap_kandy = function(apiKey, username, password) {
     };
 
     var onCallEnded = function(call) {
-        callId = null;
     };
 
     var onCallEstablished = function(call) {
+        $audioRingIn[0].pause();
+        $audioRingOut[0].pause();
     };
 
 
