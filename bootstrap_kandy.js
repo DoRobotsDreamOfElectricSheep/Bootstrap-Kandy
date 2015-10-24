@@ -60,11 +60,17 @@ var bootstrap_kandy = function(apiKey, username, password) {
         });
 
         $('#startAgent').on('click', function() {
+            $('#startAgent').removeClass('buttonHighlight');
+            $('#startAgent').addClass('buttonNoHighlight');
+            document.getElementById('startAgent').disabled = true;
+
             var container = document.getElementById('cobrowsing-container');
             kandy.coBrowsing.startBrowsingAgent(sessionId, container);
+            document.getElementById('stopAgent').disabled = false;
         });
 
         $('#stopAgent').on('click', function() {
+            document.getElementById('stopAgent').disabled = true;
             kandy.coBrowsing.stopBrowsingAgent();
         });
 
@@ -129,6 +135,7 @@ var bootstrap_kandy = function(apiKey, username, password) {
         kandy.session.join(sessionId, {}, onSessionJoinSuccess, onSessionFailure);
 
         document.getElementById('startAgent').disabled = false;
+        $('#startAgent').removeClass('buttonNoHighlight');
         $('#startAgent').addClass('buttonHighlight');
     };
 
